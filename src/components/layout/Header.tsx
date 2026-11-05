@@ -11,7 +11,7 @@ export function Header() {
     <header className="border-b bg-card">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="font-bold text-xl tracking-tight">
-          ExpenseTrail
+          AppTemplate
         </Link>
         <div className="flex items-center gap-4">
           {user ? (
@@ -19,13 +19,6 @@ export function Header() {
               <span data-testid="user-email" className="text-sm font-medium text-muted-foreground">
                 {user.email}
               </span>
-              <Link
-                href="/expenses"
-                data-testid="link-expenses"
-                className="text-sm font-medium hover:underline text-primary"
-              >
-                Expenses
-              </Link>
               <Button
                 variant="outline"
                 size="sm"
