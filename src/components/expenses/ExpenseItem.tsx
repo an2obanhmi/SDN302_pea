@@ -57,7 +57,7 @@ export function ExpenseItem({ expense }: { expense: Expense }) {
             data-testid="expense-amount"
             className="font-mono font-bold text-lg text-[#0B1329] tracking-tight"
           >
-            ${formatCurrency(expense.amount)}
+            {formatCurrency(expense.amount)}
           </span>
         </div>
 

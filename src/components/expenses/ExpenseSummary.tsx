@@ -60,7 +60,7 @@ export function ExpenseSummary() {
               data-testid="total-amount"
               className="text-xl font-bold font-mono text-[#F59E0B] mt-0.5"
             >
-              ${formatCurrency(totalAmount)}
+              {formatCurrency(totalAmount)}
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@ export function ExpenseSummary() {
                       data-testid="breakdown-total"
                       className="font-mono font-bold text-xs text-[#0B1329] w-20 text-right"
                     >
-                      ${formatCurrency(row.total)}
+                      {formatCurrency(row.total)}
                     </span>
                   </div>
                 </div>
