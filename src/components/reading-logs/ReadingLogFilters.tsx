@@ -1,20 +1,20 @@
 "use client";
 
 import React from "react";
-import { useExpense } from "@/context/ExpenseContext";
-import { CATEGORIES } from "@/constants/categories";
+import { useReadingLog } from "@/context/ReadingLogContext";
+import { GENRES } from "@/constants/genres";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 
-export function ExpenseFilters() {
+export function ReadingLogFilters() {
   const {
     filters,
-    setCategoryFilter,
-    setStarredFilter,
+    setGenreFilter,
+    setFavoriteFilter,
     setSearchQuery,
     clearFilters,
-  } = useExpense();
+  } = useReadingLog();
 
   return (
     <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3 p-4 bg-card border rounded-lg shadow-sm">
@@ -22,7 +22,7 @@ export function ExpenseFilters() {
         <Input
           data-testid="search-input"
           type="text"
-          placeholder="Search by title or note..."
+          placeholder="Search by book title or note..."
           value={filters.q}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
@@ -30,14 +30,14 @@ export function ExpenseFilters() {
 
       <div className="w-full md:w-48">
         <Select
-          data-testid="filter-category"
-          value={filters.category}
-          onChange={(e) => setCategoryFilter(e.target.value)}
+          data-testid="filter-genre"
+          value={filters.genre}
+          onChange={(e) => setGenreFilter(e.target.value)}
         >
           <option value="">All</option>
-          {CATEGORIES.map((cat) => (
-            <option key={cat} value={cat}>
-              {cat}
+          {GENRES.map((g) => (
+            <option key={g} value={g}>
+              {g}
             </option>
           ))}
         </Select>
@@ -46,12 +46,12 @@ export function ExpenseFilters() {
       <label className="flex items-center gap-2 cursor-pointer select-none text-sm font-medium">
         <input
           type="checkbox"
-          data-testid="filter-starred"
-          checked={filters.starred}
-          onChange={(e) => setStarredFilter(e.target.checked)}
+          data-testid="filter-favorite"
+          checked={filters.favorite}
+          onChange={(e) => setFavoriteFilter(e.target.checked)}
           className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
         />
-        <span>Starred only</span>
+        <span>Favorites only</span>
       </label>
 
       <Button

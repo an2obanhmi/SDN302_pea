@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/cookies";
-import { ExpenseService } from "@/services/expense.service";
+import { ReadingLogService } from "@/services/reading-log.service";
 import { MESSAGES } from "@/constants/messages";
 
 export async function GET(req: Request) {
@@ -10,10 +10,10 @@ export async function GET(req: Request) {
   }
 
   const { searchParams } = new URL(req.url);
-  const category = searchParams.get("category") || undefined;
-  const starred = searchParams.get("starred") === "true" ? true : undefined;
+  const genre = searchParams.get("genre") || undefined;
+  const favorite = searchParams.get("favorite") === "true" ? true : undefined;
   const q = searchParams.get("q") || undefined;
 
-  const summary = await ExpenseService.getSummary(session.userId, { category, starred, q });
+  const summary = await ReadingLogService.getSummary(session.userId, { genre, favorite, q });
   return NextResponse.json(summary, { status: 200 });
 }
