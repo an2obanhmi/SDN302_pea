@@ -61,7 +61,7 @@ export function LoginForm() {
       }
 
       login(data);
-      router.push("/expenses");
+      router.push("/reading-logs");
     } catch {
       setAuthError("Network error occurred");
     }
@@ -74,10 +74,10 @@ export function LoginForm() {
           <Lock className="w-4 h-4 text-[#F59E0B]" />
         </div>
         <CardTitle className="font-serif text-2xl font-bold text-[#0B1329]">
-          Sign in to ExpenseTrail
+          Sign in to ReadLog
         </CardTitle>
         <CardDescription className="text-xs text-slate-600">
-          Enter your credentials to access your personal expense ledger.
+          Enter your credentials to access your personal reading sessions.
         </CardDescription>
       </CardHeader>
       <CardContent className="p-6">

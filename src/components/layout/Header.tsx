@@ -15,7 +15,7 @@ export function Header() {
           className="group flex items-center gap-2 font-serif text-xl tracking-tight font-bold text-[#0B1329]"
         >
           <span className="w-2.5 h-2.5 rounded-full bg-[#F59E0B] inline-block transition-transform duration-300 group-hover:scale-125" />
-          <span>ExpenseTrail</span>
+          <span>ReadLog</span>
         </Link>
 
         <div className="flex items-center gap-3 sm:gap-4">
@@ -29,11 +29,11 @@ export function Header() {
               </span>
 
               <Link
-                href="/expenses"
-                data-testid="link-expenses"
+                href="/reading-logs"
+                data-testid="link-reading-logs"
                 className="text-xs uppercase tracking-wider font-semibold text-[#0B1329] hover:text-[#F59E0B] transition-colors py-1.5 px-2"
               >
-                Expenses
+                Reading Logs
               </Link>
 
               <Button

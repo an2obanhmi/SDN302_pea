@@ -85,10 +85,10 @@ export function RegisterForm() {
           <UserPlus className="w-4 h-4 text-[#F59E0B]" />
         </div>
         <CardTitle className="font-serif text-2xl font-bold text-[#0B1329]">
-          Create Ledger Account
+          Create ReadLog Account
         </CardTitle>
         <CardDescription className="text-xs text-slate-600">
-          Register to begin tracking personal expenses with end-to-end multi-tenant isolation.
+          Register to begin tracking personal reading sessions with multi-tenant isolation.
         </CardDescription>
       </CardHeader>
       <CardContent className="p-6">
