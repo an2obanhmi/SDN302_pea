@@ -14,20 +14,24 @@ model User {
   passwordHash String
   createdAt    DateTime     @default(now())
   readingLogs  ReadingLog[]
+
+  @@map("users")
 }
 
 model ReadingLog {
   id          String   @id @default(cuid())
   userId      String
   bookTitle   String
-  minutesRead Int
-  genre       String
+  minutesRead Int      // Chú ý: Đổi từ Float sang Int
+  genre       String   // Fiction, Non-Fiction, Sci-Fi, Biography, Other
   note        String   @default("")
   favorite    Boolean  @default(false)
-  readOn      String
+  readOn      String   // YYYY-MM-DD
   createdAt   DateTime @default(now())
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+  @@index([userId, readOn])
+  @@map("reading_logs")
 }
