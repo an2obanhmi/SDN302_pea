@@ -34,7 +34,7 @@ export function ReadingLogItem({ readingLog }: { readingLog: ReadingLog }) {
 
       <div className="flex items-center justify-between sm:justify-end w-full sm:w-auto gap-4">
         <span data-testid="reading-log-minutes" className="font-bold text-base sm:text-right">
-          {readingLog.minutesRead} mins
+          {readingLog.minutesRead}
         </span>
 
         <div className="flex items-center gap-1">
