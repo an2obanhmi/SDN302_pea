@@ -5,7 +5,9 @@ import { MESSAGES } from "@/constants/messages";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import Link from "next/link";
+import { UserPlus } from "lucide-react";
 
 export function RegisterForm() {
   const [email, setEmail] = useState("");
@@ -77,25 +79,45 @@ export function RegisterForm() {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto">
-      <CardHeader>
-        <CardTitle className="text-xl">Create an Account</CardTitle>
+    <Card className="w-full max-w-md mx-auto border border-[#E2E8F0] shadow-sm bg-white rounded-md overflow-hidden">
+      <CardHeader className="bg-[#F8FAFC] border-b border-[#E2E8F0] p-6 text-center space-y-1">
+        <div className="w-10 h-10 rounded-full bg-[#0B1329] text-white flex items-center justify-center mx-auto mb-2">
+          <UserPlus className="w-4 h-4 text-[#F59E0B]" />
+        </div>
+        <CardTitle className="font-serif text-2xl font-bold text-[#0B1329]">
+          Create Ledger Account
+        </CardTitle>
+        <CardDescription className="text-xs text-slate-600">
+          Register to begin tracking personal expenses with end-to-end multi-tenant isolation.
+        </CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-6">
         <form data-testid="register-form" noValidate onSubmit={handleSubmit} className="space-y-4">
           {successMessage && (
-            <div data-testid="form-success" className="text-sm font-medium text-green-600">
+            <div
+              data-testid="form-success"
+              className="p-3 text-xs font-semibold tracking-wide text-emerald-800 bg-emerald-50 border-l-2 border-emerald-500 rounded-sm"
+            >
               {successMessage}
             </div>
           )}
+
           {authError && (
-            <div data-testid="error-auth" className="text-sm font-medium text-destructive">
+            <div
+              data-testid="error-auth"
+              className="p-3 text-xs font-semibold tracking-wide text-rose-800 bg-rose-50 border-l-2 border-rose-500 rounded-sm"
+            >
               {authError}
             </div>
           )}
 
-          <div className="space-y-1">
-            <Label htmlFor="register-email">Email</Label>
+          <div className="space-y-1.5">
+            <Label
+              htmlFor="register-email"
+              className="text-xs font-semibold uppercase tracking-wider text-slate-700"
+            >
+              Email Address
+            </Label>
             <Input
               id="register-email"
               data-testid="register-email"
@@ -105,17 +127,23 @@ export function RegisterForm() {
                 setEmail(e.target.value);
                 setAuthError("");
               }}
-              placeholder="you@example.com"
+              placeholder="user@example.com"
+              className="h-10 text-sm bg-[#F8FAFC] border-[#E2E8F0] focus-visible:ring-1 focus-visible:ring-[#0B1329] focus-visible:bg-white rounded-md text-[#0B1329]"
             />
             {emailError && (
-              <span data-testid="error-email" className="text-sm text-destructive block">
+              <span data-testid="error-email" className="text-xs font-medium text-rose-600 block mt-1">
                 {emailError}
               </span>
             )}
           </div>
 
-          <div className="space-y-1">
-            <Label htmlFor="register-password">Password</Label>
+          <div className="space-y-1.5">
+            <Label
+              htmlFor="register-password"
+              className="text-xs font-semibold uppercase tracking-wider text-slate-700"
+            >
+              Password
+            </Label>
             <Input
               id="register-password"
               data-testid="register-password"
@@ -125,16 +153,25 @@ export function RegisterForm() {
                 setPassword(e.target.value);
                 setAuthError("");
               }}
+              className="h-10 text-sm bg-[#F8FAFC] border-[#E2E8F0] focus-visible:ring-1 focus-visible:ring-[#0B1329] focus-visible:bg-white rounded-md text-[#0B1329]"
             />
             {passwordError && (
-              <span data-testid="error-password" className="text-sm text-destructive block">
+              <span
+                data-testid="error-password"
+                className="text-xs font-medium text-rose-600 block mt-1"
+              >
                 {passwordError}
               </span>
             )}
           </div>
 
-          <div className="space-y-1">
-            <Label htmlFor="register-confirm-password">Confirm Password</Label>
+          <div className="space-y-1.5">
+            <Label
+              htmlFor="register-confirm-password"
+              className="text-xs font-semibold uppercase tracking-wider text-slate-700"
+            >
+              Confirm Password
+            </Label>
             <Input
               id="register-confirm-password"
               data-testid="register-confirm-password"
@@ -144,17 +181,32 @@ export function RegisterForm() {
                 setConfirmPassword(e.target.value);
                 setAuthError("");
               }}
+              className="h-10 text-sm bg-[#F8FAFC] border-[#E2E8F0] focus-visible:ring-1 focus-visible:ring-[#0B1329] focus-visible:bg-white rounded-md text-[#0B1329]"
             />
             {confirmPasswordError && (
-              <span data-testid="error-confirm-password" className="text-sm text-destructive block">
+              <span
+                data-testid="error-confirm-password"
+                className="text-xs font-medium text-rose-600 block mt-1"
+              >
                 {confirmPasswordError}
               </span>
             )}
           </div>
 
-          <Button type="submit" data-testid="register-submit" className="w-full">
-            Register
+          <Button
+            type="submit"
+            data-testid="register-submit"
+            className="w-full h-11 bg-[#0B1329] hover:bg-[#132147] text-white font-semibold text-xs uppercase tracking-wider rounded-md shadow-sm transition-all mt-2"
+          >
+            Create Account
           </Button>
+
+          <p className="text-center text-xs text-slate-600 pt-2">
+            Already registered?{" "}
+            <Link href="/login" className="font-semibold text-[#0B1329] hover:underline">
+              Sign in
+            </Link>
+          </p>
         </form>
       </CardContent>
     </Card>
